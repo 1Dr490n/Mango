@@ -4,8 +4,7 @@ How to register a pushover device:
 
 1. Download Pushover in the App or Play Store.
 2. Log in using the email 'mangonotification@gmail.com' and the password 'TaylorSwift13'.
-3. Give your device a name. It can be anything, but please use your Mango name followed by a number.
-4. Enter the device name into the 'Add pushover device' text field and press Enter.
-5. You should get a notification with a 4-digit code on your device now. Please enter that code in Mango.
+3. Give your device a name. It can be anything, but it should contain your Mango name.
+4. Ask me to register your device name. It's not yet possible for you to register your device by yourself.
 
 You can enter multiple devices.
