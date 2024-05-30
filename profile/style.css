@@ -1,8 +1,17 @@
 .detail .profile-picture {
     width: 5cm;
     height: 5cm;
+    float: left;
 }
 
-#profile-name {
-
+#profile-biography {
+    background: #333333;
+    padding: 5px;
+    border-radius: 2mm;
+    white-space: break-spaces;
+    width: calc(100% - 10cm);
+    float: left;
+}
+#profile-stats {
+    float: left;
 }

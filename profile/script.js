@@ -18,5 +18,5 @@ socket.onmessage = (ev) => {
     image.src = input.profilePicture;
     name.innerText = searchParams.get('user');
     biography.innerText = input.biography;
-    stats.innerText = "Sent " + input.totalSongs + " songs. Top artist: " + input.topArtist;
+    stats.innerText = "Sent " + input.totalSongs + " songs. Top artist: " + input.topArtist + ".";
 };
