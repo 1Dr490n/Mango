@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mango</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <link rel="icon" href="icon.png">
+</head>
+<body>
+<label id="login">
+    <input type="text" autofocus id="name" placeholder="Name">
+    <input type="password" id="password" placeholder="Password">
+    <input type="text" id="group-id" placeholder="Group ID">
+    <input type="button" onclick="login(false)" value="Log in">
+    <input type="button" onclick="login(true)" value="Sign up">
+</label>
+<div id="logged-in" style="display: none">
+    <input type="text" id="search" placeholder="Search" onkeydown="search(this)">
+    <div id="selected-track" style="display: none;"></div>
+    <ul id="search-results" class="search-results"></ul>
+
+    <textarea id="message" style="display: none" placeholder="Message" onkeydown="/*resizeTextArea(this)*/"></textarea>
+    <input type="button" onclick="selectAll()" style="display: none" id="select-all" value="Select all">
+    <input type="submit" onclick="send()" style="display: none" id="send">
+    <label class="checkbox">Show hidden songs
+        <input type="checkbox" onclick="reloadVisibility(this)" id="show-hidden">
+        <span class="checkmark"></span>
+    </label>
+    <label class="checkbox">Show your songs
+        <input type="checkbox" checked="checked" onclick="reloadVisibility(this)" id="show-yours">
+        <span class="checkmark"></span>
+    </label>
+    <ul id="new-tracks"></ul>
+
+    <input type="button" onclick="openSettings()" value="Settings" id="open-settings">
+</div>
+<div class="settings" id="settings" style="display: none">
+    <input type="text" placeholder="Link to profile picture" id="profile-picture" onkeydown="profilePicture(this)">
+    <!--input type="text" placeholder="Add pushover device" id="pushover" onkeydown="pushover(this)"> <a href="pushover.txt">What is pushover?</a-->
+    <input type="button" onclick="location.reload()" value="Close settings">
+    <input type="button" onclick="logout()" value="Log out" style="margin-top: 1cm">
+</div>
+<script src="script.js"></script>
+</body>
+</html>
