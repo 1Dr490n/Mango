@@ -14,7 +14,9 @@ socket.onmessage = (ev) => {
     const image = document.getElementById("profile-picture");
     const name = document.getElementById("profile-name");
     const biography = document.getElementById("profile-biography");
+    const stats = document.getElementById("profile-stats");
     image.src = input.profilePicture;
     name.innerText = searchParams.get('user');
     biography.innerText = input.biography;
+    stats.innerText = "Sent " + input.totalSongs + " songs. Top artist: " + input.topArtist;
 };
