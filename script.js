@@ -341,15 +341,9 @@ function selectAll() {
         document.getElementById("-user-" + user).checked = true;
     }
 }
-function pushover(ele) {
-    if (event.key === 'Enter') {
-        window.confirm("You've entered the device name '" + ele.value.trim() + "'. Please make sure it's exactly the device name you've entered in the Pushover-App, otherwise the Admin might kill you if you continue (tell them anyways please if you realize it was wrong).")
-        socket.send(JSON.stringify({messageType: "pushover", string: ele.value.trim()}));
-    }
-}
 function reloadSetting(ele) {
     if (event.key === 'Enter') {
-        socket.send(JSON.stringify({messageType: ele.id, string: ele.value}));
+        socket.send(JSON.stringify({messageType: ele.id, string: ele.value.trim()}));
     }
 }
 function reloadVisibility() {
