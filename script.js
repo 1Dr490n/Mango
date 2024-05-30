@@ -262,6 +262,10 @@ function login(signup) {
                 message.style.display = 'none';
                 message.value = "";
 
+                let searchType = document.getElementById("search-type");
+                searchType.style.display = 'none';
+                searchType.selectedIndex = 0;
+
                 document.getElementById("message").style.display = 'block';
 
                 for (let result of input.users) {
@@ -334,7 +338,8 @@ function login(signup) {
 }
 function search(ele) {
     if (event.key === 'Enter' && selectedTrack == null) {
-        socket.send(JSON.stringify({messageType: "search", string: ele.value.replaceAll(/[^\w ]/g, '')}));
+        let number = document.getElementById('search-type').selectedIndex;
+        socket.send(JSON.stringify({messageType: "search", string: ele.value.replaceAll(/[^\w ]/g, ''), number: number}));
     }
 }
 function selectAll() {
@@ -373,6 +378,7 @@ function send() {
     }));
 
     document.getElementById("search").style.display = 'block';
+    document.getElementById("search-type").style.display = 'block';
     document.getElementById("message").value = '';
     document.getElementById("message").style.display = 'none';
     document.getElementById("send").style.display = 'none';
