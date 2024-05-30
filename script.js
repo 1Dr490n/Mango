@@ -216,7 +216,8 @@ function login(signup) {
             case "login":
                 document.getElementById("logged-in").style.display = 'block';
                 document.getElementById("login").style.display = 'none';
-                document.getElementById('profile-picture').innerHTML = input.profilePicture;
+                document.getElementById('profile-picture').value = input.profilePicture;
+                document.getElementById('biography').value = input.biography;
                 localStorage.setItem("user", document.getElementById("name").value);
                 localStorage.setItem("password", document.getElementById("password").value);
                 localStorage.setItem("group-id", document.getElementById("group-id").value);
