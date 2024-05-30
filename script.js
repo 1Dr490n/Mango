@@ -24,30 +24,9 @@ function logout() {
     location.reload()
 }
 function login(signup) {
-    let request = new XMLHttpRequest();
-    request.open('GET', 'https://raw.githubusercontent.com/1Dr490n/Mango/main/url.txt', true)
-    request.send(null);
-    request.onreadystatechange = () => {
-        if(request.readyState === 4 && request.status === 200) {
-            let type = request.getResponseHeader('Content-Type');
-            if (type.indexOf("text") !== 1) {
-                console.log(request.responseText);
-                if(request.responseText[0] === "#") {
-                    window.alert("The server is offline right now. Please try again in a few minutes.");
-                    return;
-                }
-                connect(signup, request.responseText);
-            }
-        }
-    }
-    request.onerror = () => {
-        window.alert("Please check your internet connection. If you have internet and it still doesn't work, please contact the admin.")
-    }
-}
-function connect(signup, webserver) {
     //socket = new WebSocket("ws://localhost:1989");
 
-    socket = new WebSocket("wss://" + webserver);
+    socket = new WebSocket("wss://" + url);
     socket.onerror = (ev) => {
         window.alert("Couldn't connect to server. Please check your internet connection. If you have internet and it still doesn't work, the server might be off right now. If this is still the case in a couple of minutes, please contact the admin.");
     }
