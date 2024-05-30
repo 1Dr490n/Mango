@@ -290,8 +290,9 @@ function login(signup) {
                 let code;
                 do {
                     code = window.prompt("Please enter your validation code.");
-                } while(isNaN(parseInt(code)))
-                socket.send(JSON.stringify({messageType: "pushover-validate", number: parseInt(code)}));
+                } while(isNaN(parseInt(code)) && code !== null)
+                if(code !== null)
+                   socket.send(JSON.stringify({messageType: "pushover-validate", number: parseInt(code)}));
                 break;
             case "reaction":
                 for(let li of newTracks.getElementsByClassName("track-item")) {
