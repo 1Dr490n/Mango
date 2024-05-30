@@ -24,9 +24,7 @@ function logout() {
     location.reload()
 }
 function login(signup) {
-    //socket = new WebSocket("ws://localhost:1989");
-
-    socket = new WebSocket("wss://" + url);
+    socket = new WebSocket(url);
     socket.onerror = (ev) => {
         window.alert("Couldn't connect to server. Please check your internet connection. If you have internet and it still doesn't work, the server might be off right now. If this is still the case in a couple of minutes, please contact the admin.");
     }
@@ -52,9 +50,12 @@ function login(signup) {
 
                 div = document.createElement("div");
 
+                let profilePictureA = document.createElement("a");
+                profilePictureA.href = "profile?group=" + document.getElementById("group-id").value.trim() + "&user=" + input.sentBy;
                 let profilePicture = document.createElement("img");
                 profilePicture.className = "profile-picture";
                 profilePicture.src = input.profilePicture;
+                profilePictureA.appendChild(profilePicture);
 
                 let cover = document.createElement("img");
                 cover.className = "cover";
@@ -72,7 +73,7 @@ function login(signup) {
                 artist.className = "artist";
                 artist.innerHTML = input.track.artist;
 
-                div.appendChild(profilePicture);
+                div.appendChild(profilePictureA);
                 div.appendChild(coverA);
                 div.appendChild(name);
                 div.appendChild(artist);
@@ -345,9 +346,9 @@ function pushover(ele) {
         socket.send(JSON.stringify({messageType: "pushover", string: ele.value.trim()}));
     }
 }
-function profilePicture(ele) {
+function reloadSetting(ele) {
     if (event.key === 'Enter') {
-        socket.send(JSON.stringify({messageType: "profile-picture", string: ele.value}));
+        socket.send(JSON.stringify({messageType: ele.id, string: ele.value}));
     }
 }
 function reloadVisibility() {
