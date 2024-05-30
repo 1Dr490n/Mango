@@ -57,7 +57,8 @@ li {
     object-fit: cover;
 }
 .artist {
-    color: #888888;
+    //color: #888888;
+    color: red;
     font-size: 6mm;
     margin-top: 0;
 }
