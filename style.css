@@ -49,9 +49,10 @@ li {
     border-radius: 1mm;
 }
 .profile-picture {
-    width: 1cm;
-    height: 1cm;
+    width: 1.5cm;
+    height: 1.5cm;
     float: left;
+    margin-top: .25cm;
     margin-right: 5mm;
     border-radius: 50%;
     object-fit: cover;
@@ -61,7 +62,14 @@ li {
     font-size: 6mm;
     margin-top: 0;
 }
-.track {
+.artist .type {
+    background-color: #222222;
+    padding: 1mm;
+    border-radius: 1mm;
+    margin-left: 2mm;
+    font-size: 4mm;
+}
+.item {
     font-size: 8mm;
     margin-bottom: 0;
     color: white;

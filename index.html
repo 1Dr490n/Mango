@@ -22,21 +22,21 @@
         <option>Artist</option>
         <option>Playlist</option>
     </select>
-    <div id="selected-track" style="display: none;"></div>
+    <div id="selected-item" style="display: none;"></div>
     <ul id="search-results" class="search-results"></ul>
 
     <textarea id="message" style="display: none" placeholder="Message" onkeydown="/*resizeTextArea(this)*/"></textarea>
     <input type="button" onclick="selectAll()" style="display: none" id="select-all" value="Select all">
     <input type="submit" onclick="send()" style="display: none" id="send">
-    <label class="checkbox">Show hidden songs
+    <label class="checkbox">Show hidden items
         <input type="checkbox" onclick="reloadVisibility(this)" id="show-hidden">
         <span class="checkmark"></span>
     </label>
-    <label class="checkbox">Show your songs
+    <label class="checkbox">Show your items
         <input type="checkbox" checked="checked" onclick="reloadVisibility(this)" id="show-yours">
         <span class="checkmark"></span>
     </label>
-    <ul id="new-tracks"></ul>
+    <ul id="new-items"></ul>
 
     <input type="button" onclick="openSettings()" value="Settings" id="open-settings">
 </div>

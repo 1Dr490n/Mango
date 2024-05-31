@@ -1,9 +1,9 @@
 let socket;
 let user_name;
-const newTracks = document.getElementById("new-tracks");
+const newItems = document.getElementById("new-items");
 const searchResults = document.getElementById("search-results");
 
-let selectedTrack;
+let selectedItem;
 
 let users;
 
@@ -43,10 +43,10 @@ function login(signup) {
         let div;
 
         switch (input.messageType) {
-            case "track":
+            case "item":
                 let item = document.createElement("li");
                 item.number = input.number;
-                item.className = "track-item";
+                item.className = "item-item";
 
                 div = document.createElement("div");
 
@@ -59,19 +59,19 @@ function login(signup) {
 
                 let cover = document.createElement("img");
                 cover.className = "cover";
-                cover.src = input.track.image;
+                cover.src = input.item.image;
 
                 let coverA = document.createElement("a");
                 coverA.appendChild(cover)
-                coverA.href = input.track.link;
+                coverA.href = input.item.link;
 
                 let name = document.createElement("p");
-                name.className = "track";
-                name.innerHTML = input.track.name;
+                name.className = "item";
+                name.innerHTML = input.item.name;
 
                 let artist = document.createElement("p");
                 artist.className = "artist";
-                artist.innerHTML = input.track.artist;
+                artist.innerHTML = input.item.artist + '<span class="type">' + input.item.type.toLowerCase() + '</span>';
 
                 div.appendChild(profilePictureA);
                 div.appendChild(coverA);
@@ -163,31 +163,31 @@ function login(signup) {
                 info.appendChild(hide);
 
                 if(input.sentBy === user_name) {
-                    let deleteTrack = document.createElement("input");
+                    let deleteItem = document.createElement("input");
                     info.appendChild(document.createElement("br"));
-                    deleteTrack.type = "button";
-                    deleteTrack.value = "Delete";
-                    deleteTrack.onclick = (ev) => {
-                        if(window.confirm("This song will be deleted for everyone you sent it to")) {
+                    deleteItem.type = "button";
+                    deleteItem.value = "Delete";
+                    deleteItem.onclick = (ev) => {
+                        if(window.confirm("This item will be deleted for everyone you sent it to")) {
                             socket.send(JSON.stringify({
                                 messageType: "delete",
                                 number: input.number
                             }));
-                            newTracks.removeChild(item);
+                            newItems.removeChild(item);
                         }
                     };
-                    info.appendChild(deleteTrack);
+                    info.appendChild(deleteItem);
                 }
 
                 div.onclick = (ev) => {
                     if(info.style.display === 'none') {
-                        for(let li of newTracks.getElementsByClassName("info")) {
+                        for(let li of newItems.getElementsByClassName("info")) {
                             li.style.display = 'none';
                         }
                         info.style.display = 'block';
                         audio?.pause()
-                        if(input.track.preview) {
-                            audio = new Audio(input.track.preview);
+                        if(input.item.preview) {
+                            audio = new Audio(input.item.preview);
                             audio.play();
                         }
                     } else {
@@ -205,9 +205,9 @@ function login(signup) {
                     item.style.display = 'none';
 
                 if(input.isAppended)
-                    newTracks.appendChild(item)
+                    newItems.appendChild(item)
                 else
-                    newTracks.prepend(item)
+                    newItems.prepend(item)
 
                 break;
             case "error":
@@ -239,10 +239,10 @@ function login(signup) {
                     let item = document.createElement("li");
                     let div = document.createElement("div");
                     div.onclick = function (ev) {
-                        selectedTrack = result;
+                        selectedItem = result;
                         socket.send(JSON.stringify({messageType: "get-users" }));
                     }
-                    div.innerHTML = `<img class="cover" src="${result.image}"><p class="track">${result.name}</p><p class="artist">${result.artist}</p>`;
+                    div.innerHTML = `<img class="cover" src="${result.image}"><p class="item">${result.name}</p><p class="artist">${result.artist}</p>`;
                     item.appendChild(div);
                     searchResults.appendChild(item);
                 }
@@ -252,11 +252,11 @@ function login(signup) {
 
                 users = input.users;
 
-                div = document.getElementById("selected-track");
+                div = document.getElementById("selected-item");
                 div.style.display = 'block';
-                div.innerHTML = `<img class="cover" src="${selectedTrack.image}"><p class="track">${selectedTrack.name}</p><p class="artist">${selectedTrack.artist}</p>`;
+                div.innerHTML = `<img class="cover" src="${selectedItem.image}"><p class="item">${selectedItem.name}</p><p class="artist">${selectedItem.artist}</p>`;
 
-                document.getElementById("selected-track").innerHTML = div.outerHTML;
+                document.getElementById("selected-item").innerHTML = div.outerHTML;
 
                 let message = document.getElementById("search");
                 message.style.display = 'none';
@@ -283,9 +283,9 @@ function login(signup) {
                 document.getElementById("select-all").style.display = 'block';
                 break;
             case "delete":
-                for(let li of newTracks.getElementsByClassName("track-item")) {
+                for(let li of newItems.getElementsByClassName("item-item")) {
                     if(li.number === input.number) {
-                        newTracks.removeChild(li)
+                        newItems.removeChild(li)
                         break;
                     }
                 }
@@ -299,7 +299,7 @@ function login(signup) {
                    socket.send(JSON.stringify({messageType: "pushover-validate", number: parseInt(code)}));
                 break;
             case "reaction":
-                for(let li of newTracks.getElementsByClassName("track-item")) {
+                for(let li of newItems.getElementsByClassName("item-item")) {
                     if(li.number === input.number) {
                         let usersWithReactions = li.getElementsByTagName('li')
                         for(let n of usersWithReactions) {
@@ -337,7 +337,7 @@ function login(signup) {
     };
 }
 function search(ele) {
-    if (event.key === 'Enter' && selectedTrack == null) {
+    if (event.key === 'Enter' && selectedItem == null) {
         let number = document.getElementById('search-type').selectedIndex;
         socket.send(JSON.stringify({messageType: "search", string: ele.value.replaceAll(/[^\w ]/g, ''), number: number}));
     }
@@ -353,7 +353,7 @@ function reloadSetting(ele) {
     }
 }
 function reloadVisibility() {
-    for(let li of newTracks.getElementsByClassName("track-item")) {
+    for(let li of newItems.getElementsByClassName("item-item")) {
         if((li.getElementsByTagName("input")[0].value !== "Show" || document.getElementById("show-hidden").checked)
             && (li.getElementsByClassName("info")[0].getElementsByClassName("sent-by")[0].innerHTML !== "Sent by " + user_name
                 || document.getElementById("show-yours").checked))
@@ -372,7 +372,7 @@ function send() {
     }
     socket.send(JSON.stringify({
         messageType: "send",
-        track: selectedTrack,
+        item: selectedItem,
         string: document.getElementById("message").value.trim(),
         users: selectedUsers
     }));
@@ -383,9 +383,9 @@ function send() {
     document.getElementById("message").style.display = 'none';
     document.getElementById("send").style.display = 'none';
     document.getElementById("select-all").style.display = 'none';
-    document.getElementById("selected-track").style.display = 'none';
+    document.getElementById("selected-item").style.display = 'none';
 
-    selectedTrack = null;
+    selectedItem = null;
 
     searchResults.innerHTML = "";
 }
