@@ -12,9 +12,11 @@ let reactions;
 let audio;
 
 window.onerror = function(msg, url, linenumber) {
-    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+    window.alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
     return true;
 };
+
+window.alert("Hii");
 
 if(localStorage.hasOwnProperty("user")) {
     document.getElementById("name").value = localStorage.getItem("user");
