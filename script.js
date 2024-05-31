@@ -11,6 +11,11 @@ let reactions;
 
 let audio;
 
+window.onerror = function(msg, url, linenumber) {
+    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+    return true;
+};
+
 if(localStorage.hasOwnProperty("user")) {
     document.getElementById("name").value = localStorage.getItem("user");
     document.getElementById("password").value = localStorage.getItem("password");
