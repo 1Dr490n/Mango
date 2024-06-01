@@ -12,8 +12,10 @@ let reactions;
 let audio;
 
 
-if(navigator.userAgent.toLowerCase().indexOf("android") > -1)
+if(navigator.userAgent.toLowerCase().indexOf("android") > -1) {
     document.getElementById('search-button').style.display = 'inline-block';
+    document.getElementById('pushover-button').style.display = 'inline-block';
+}
 if(localStorage.hasOwnProperty("user")) {
     document.getElementById("name").value = localStorage.getItem("user");
     document.getElementById("password").value = localStorage.getItem("password");

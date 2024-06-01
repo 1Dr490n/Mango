@@ -44,7 +44,11 @@
 <div class="settings" id="settings" style="display: none">
     <input type="text" placeholder="Link to profile picture" id="profile-picture">
     <textarea placeholder="Biography" id="biography"></textarea>
-    <input type="text" placeholder="Add pushover device" id="pushover"> <input type="button" onclick="pushover()" value="Add"> <a href="pushover.txt">What is pushover?</a>
+
+    <input type="text" placeholder="Add pushover device" id="pushover" onkeydown="if (event.key === 'Enter') pushover()">
+    <input type="button" onclick="pushover()" value="Add" id="pushover-button" style="display: none">
+    <a href="pushover.txt">What is pushover?</a>
+
     <input type="button" onclick="closeSettings()" value="Close settings">
     <input type="button" onclick="logout()" value="Log out" style="margin-top: 1cm">
 </div>
