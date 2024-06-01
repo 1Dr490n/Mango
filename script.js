@@ -337,7 +337,7 @@ function login(signup) {
     };
 }
 const searchEle = document.getElementById('search');
-searchEle.addEventListener('keypress', (e) => {
+searchEle.addEventListener('keydown', (e) => {
     const key = e.which || e.code;
     window.alert(key);
     if (key === 13) {
