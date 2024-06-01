@@ -11,6 +11,9 @@ let reactions;
 
 let audio;
 
+
+if(navigator.userAgent.toLowerCase().indexOf("android") > -1)
+    document.getElementById('search-button').style.display = 'inline-block';
 if(localStorage.hasOwnProperty("user")) {
     document.getElementById("name").value = localStorage.getItem("user");
     document.getElementById("password").value = localStorage.getItem("password");
@@ -337,14 +340,14 @@ function login(signup) {
     };
 }
 const searchEle = document.getElementById('search');
-searchEle.addEventListener('keydown', (e) => {
-    const key = e.which || e.code;
-    window.alert(key);
-    if (key === 13) {
-        let number = document.getElementById('search-type').selectedIndex;
-        socket.send(JSON.stringify({messageType: "search", string: searchEle.value.replace(/[^\w ]/g, ''), number: number}));
-    }
-});
+function search() {
+    let number = document.getElementById('search-type').selectedIndex;
+    socket.send(JSON.stringify({
+        messageType: "search",
+        string: searchEle.value.replace(/[^\w ]/g, ''),
+        number: number
+    }));
+}
 function selectAll() {
     for(let user of users) {
         document.getElementById("-user-" + user).checked = true;

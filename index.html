@@ -15,7 +15,8 @@
     <input type="button" onclick="login(true)" value="Sign up">
 </label>
 <div id="logged-in" style="display: none">
-    <input type="text" id="search" placeholder="Search">
+    <input type="text" id="search" placeholder="Search" onkeydown="if (event.key === 'Enter') search()">
+    <input type="button" onclick="search()" value="Search" id="search-button" style="display: none">
     <select id="search-type">
         <option>Song</option>
         <option>Album</option>
