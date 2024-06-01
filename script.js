@@ -341,18 +341,12 @@ searchEle.addEventListener('keypress', (e) => {
     const key = e.which || e.code;
     window.alert(key);
     if (key === 13) {
-        window.alert("kja");
         let number = document.getElementById('search-type').selectedIndex;
+        window.alert(number);
+        window.alert(searchEle.value.replaceAll(/[^\w ]/g, ''));
         socket.send(JSON.stringify({messageType: "search", string: searchEle.value.replaceAll(/[^\w ]/g, ''), number: number}));
     }
 });
-function search(ele) {
-    window.alert(event.key);
-    if (event.key === 'Enter') {
-        let number = document.getElementById('search-type').selectedIndex;
-        socket.send(JSON.stringify({messageType: "search", string: ele.value.replaceAll(/[^\w ]/g, ''), number: number}));
-    }
-}
 function selectAll() {
     for(let user of users) {
         document.getElementById("-user-" + user).checked = true;
