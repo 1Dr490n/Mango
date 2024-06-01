@@ -336,6 +336,14 @@ function login(signup) {
         }
     };
 }
+const searchEle = document.getElementById('search');
+searchEle.addEventListener('keydown', (e) => {
+    window.alert(e.key);
+    if (e.key === 'Enter') {
+        let number = document.getElementById('search-type').selectedIndex;
+        socket.send(JSON.stringify({messageType: "search", string: searchEle.value.replaceAll(/[^\w ]/g, ''), number: number}));
+    }
+});
 function search(ele) {
     window.alert(event.key);
     if (event.key === 'Enter') {
