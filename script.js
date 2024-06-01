@@ -337,11 +337,10 @@ function login(signup) {
     };
 }
 function search(ele) {
+    window.alert(event.key);
     if (event.key === 'Enter') {
-        window.alert("Abc");
         let number = document.getElementById('search-type').selectedIndex;
         socket.send(JSON.stringify({messageType: "search", string: ele.value.replaceAll(/[^\w ]/g, ''), number: number}));
-        window.alert("def");
     }
 }
 function selectAll() {
