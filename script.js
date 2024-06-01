@@ -343,7 +343,7 @@ searchEle.addEventListener('keypress', (e) => {
     if (key === 13) {
         let number = document.getElementById('search-type').selectedIndex;
         window.alert(number);
-        window.alert(searchEle.value.replaceAll(/[^\w ]/g, ''));
+        window.alert(searchEle.value);
         socket.send(JSON.stringify({messageType: "search", string: searchEle.value.replaceAll(/[^\w ]/g, ''), number: number}));
     }
 });
