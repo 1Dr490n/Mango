@@ -339,6 +339,7 @@ function login(signup) {
 const searchEle = document.getElementById('search');
 searchEle.addEventListener('keypress', (e) => {
     const key = e.which || e.code;
+    window.alert(key);
     if (key === 13) {
         let number = document.getElementById('search-type').selectedIndex;
         socket.send(JSON.stringify({messageType: "search", string: searchEle.value.replace(/[^\w ]/g, ''), number: number}));
@@ -347,11 +348,6 @@ searchEle.addEventListener('keypress', (e) => {
 function selectAll() {
     for(let user of users) {
         document.getElementById("-user-" + user).checked = true;
-    }
-}
-function reloadSetting(ele) {
-    if (event.key === 'Enter') {
-        socket.send(JSON.stringify({messageType: ele.id, string: ele.value.trim()}));
     }
 }
 function reloadVisibility() {
@@ -394,4 +390,21 @@ function send() {
 function openSettings() {
     document.getElementById('logged-in').style.display = 'none';
     document.getElementById('settings').style.display = 'block';
+}
+function closeSettings() {
+    socket.send(JSON.stringify({
+        messageType: "biography",
+        string: document.getElementById('biography').value
+    }));
+    socket.send(JSON.stringify({
+        messageType: "profile-picture",
+        string: document.getElementById('profile-picture').value
+    }));
+    location.reload();
+}
+function pushover() {
+    socket.send(JSON.stringify({
+        messageType: "pushover",
+        string: document.getElementById('pushover').value
+    }));
 }
