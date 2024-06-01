@@ -341,6 +341,7 @@ searchEle.addEventListener('keypress', (e) => {
     const key = e.which || e.code;
     window.alert(key);
     if (key === 13) {
+        window.alert("kja");
         let number = document.getElementById('search-type').selectedIndex;
         socket.send(JSON.stringify({messageType: "search", string: searchEle.value.replaceAll(/[^\w ]/g, ''), number: number}));
     }
