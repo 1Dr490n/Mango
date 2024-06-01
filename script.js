@@ -11,13 +11,6 @@ let reactions;
 
 let audio;
 
-window.onerror = function(msg, url, linenumber) {
-    window.alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
-    return true;
-};
-
-window.alert("Hii");
-
 if(localStorage.hasOwnProperty("user")) {
     document.getElementById("name").value = localStorage.getItem("user");
     document.getElementById("password").value = localStorage.getItem("password");
@@ -344,7 +337,7 @@ function login(signup) {
     };
 }
 function search(ele) {
-    if (event.key === 'Enter' && selectedItem == null) {
+    if (event.key === 'Enter') {
         let number = document.getElementById('search-type').selectedIndex;
         socket.send(JSON.stringify({messageType: "search", string: ele.value.replaceAll(/[^\w ]/g, ''), number: number}));
     }
