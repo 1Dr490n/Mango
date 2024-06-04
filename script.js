@@ -259,7 +259,7 @@ function login(signup) {
 
                 div = document.getElementById("selected-item");
                 div.style.display = 'block';
-                div.innerHTML = `<img class="cover" src="${selectedItem.image}"><p class="item">${selectedItem.name}</p><p class="artist">${selectedItem.artist}</p>`;
+                div.innerHTML = `<img class="cover" src="${selectedItem.image}"><p class="item">${selectedItem.name}</p><p class="artist">${selectedItem.artist.length === 0 ? " " : selectedItem.artist}</p>`;
 
                 document.getElementById("selected-item").innerHTML = div.outerHTML;
 
