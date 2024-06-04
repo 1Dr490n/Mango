@@ -247,7 +247,7 @@ function login(signup) {
                         selectedItem = result;
                         socket.send(JSON.stringify({messageType: "get-users" }));
                     }
-                    div.innerHTML = `<img class="cover" src="${result.image}"><p class="item">${result.name}</p><p class="artist">${result.artist}</p>`;
+                    div.innerHTML = `<img class="cover" src="${result.image}"><p class="item">${result.name}</p><p class="artist">${result.artist.length === 0 ? ' ' result.artist}</p>`;
                     item.appendChild(div);
                     searchResults.appendChild(item);
                 }
