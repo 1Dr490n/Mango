@@ -249,7 +249,7 @@ function login(signup) {
                         selectedItem = result;
                         socket.send(JSON.stringify({messageType: "get-users" }));
                     }
-                    div.innerHTML = `<img class="cover" src="${result.image}"><p class="item">${result.name}</p><p class="artist">${result.artist}</p>`;
+                    div.innerHTML = `<img class="cover" src="${result.image}"><p class="item">${result.name}</p><p class="artist">${result.artist}&zwnj;</p>`;
                     item.appendChild(div);
                     searchResults.appendChild(item);
                 }
@@ -261,7 +261,7 @@ function login(signup) {
 
                 div = document.getElementById("selected-item");
                 div.style.display = 'block';
-                div.innerHTML = `<img class="cover" src="${selectedItem.image}"><p class="item">${selectedItem.name}</p><p class="artist">${selectedItem.artist}</p>`;
+                div.innerHTML = `<img class="cover" src="${selectedItem.image}"><p class="item">${selectedItem.name}</p><p class="artist">${selectedItem.artist.length === 0 ? " " : selectedItem.artist}</p>`;
 
                 document.getElementById("selected-item").innerHTML = div.outerHTML;
 
