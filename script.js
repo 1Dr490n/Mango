@@ -1,5 +1,5 @@
 if(window.confirm("Do you want to continue to the (possibly not working at the moment) new Mango?")) {
-    window.location.href = "https://formally-next-cicada.ngrok-free.app"
+    window.location.href = "https://3f26-2a02-8071-5f00-2660-5c09-2a16-3c52-edea.ngrok-free.app"
 }
 
 
