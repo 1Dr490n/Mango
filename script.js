@@ -114,7 +114,9 @@ function login(signup) {
                     name.innerHTML += '<span class="message-icon" style="background-color: white"></span>'
 
                 let sentTo = document.createElement("ul");
-                for(let [u, r] of Object.entries(input.usersWithReactions)) {
+                for(let n of input.usersWithReactions) {
+                    const u = n.user;
+                    const r = n.reaction;
                     let item = document.createElement("li");
                     item.innerHTML = u;
                     if(u === user_name) {
