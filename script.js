@@ -1,3 +1,8 @@
+if(window.confirm("Do you want to continue to the (possibly not working at the moment) new Mango?")) {
+    window.location.href = "https://formally-next-cicada.ngrok-free.app"
+}
+
+
 let socket;
 let user_name;
 const newItems = document.getElementById("new-items");
@@ -10,7 +15,6 @@ let users;
 let reactions;
 
 let audio;
-
 
 if(navigator.userAgent.toLowerCase().indexOf("android") > -1) {
     document.getElementById('search-button').style.display = 'inline-block';
