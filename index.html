@@ -1,58 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Mango</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
-    <link rel="icon" href="icon.png">
-</head>
-<body>
-<label id="login">
-    <input type="text" autofocus id="name" placeholder="Name">
-    <input type="password" id="password" placeholder="Password">
-    <input type="text" id="group-id" placeholder="Group ID">
-    <input type="button" onclick="login(false)" value="Log in">
-    <input type="button" onclick="login(true)" value="Sign up">
-</label>
-<div id="logged-in" style="display: none">
-    <input type="text" id="search" placeholder="Search" onkeydown="if (event.key === 'Enter') search()">
-    <input type="button" onclick="search()" value="Search" id="search-button" style="display: none">
-    <select id="search-type">
-        <option>Song</option>
-        <option>Album</option>
-        <option>Artist</option>
-        <option>Playlist</option>
-    </select>
-    <div id="selected-item" style="display: none;"></div>
-    <ul id="search-results" class="search-results"></ul>
+<script>
+    if(!window.confirm("Do you want to continue to the (possibly not working at the moment) new Mango?")) {
+        window.location.href = "old"
+    }
+</script>
 
-    <textarea id="message" style="display: none" placeholder="Message"></textarea>
-    <input type="button" onclick="selectAll()" style="display: none" id="select-all" value="Select all">
-    <input type="submit" onclick="send()" style="display: none" id="send">
-    <label class="checkbox">Show hidden items
-        <input type="checkbox" onclick="reloadVisibility(this)" id="show-hidden">
-        <span class="checkmark"></span>
-    </label>
-    <label class="checkbox">Show your items
-        <input type="checkbox" checked="checked" onclick="reloadVisibility(this)" id="show-yours">
-        <span class="checkmark"></span>
-    </label>
-    <ul id="new-items"></ul>
-
-    <input type="button" onclick="openSettings()" value="Settings" id="open-settings">
-</div>
-<div class="settings" id="settings" style="display: none">
-    <input type="text" placeholder="Link to profile picture" id="profile-picture">
-    <textarea placeholder="Biography" id="biography"></textarea>
-
-    <input type="text" placeholder="Add pushover device" id="pushover" onkeydown="if (event.key === 'Enter') pushover()">
-    <input type="button" onclick="pushover()" value="Add" id="pushover-button" style="display: none">
-    <a href="pushover.txt">What is pushover?</a>
-
-    <input type="button" onclick="closeSettings()" value="Close settings">
-    <input type="button" onclick="logout()" value="Log out" style="margin-top: 1cm">
-</div>
-<script src="url.js"></script>
-<script src="script.js"></script>
-</body>
-</html>
+<iframe style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;" src="https://ab96-2a02-8071-5f00-2660-5c09-2a16-3c52-edea.ngrok-free.app"></iframe>
