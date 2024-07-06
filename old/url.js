@@ -1,6 +1,1 @@
-const url = location.href.endsWith("local") ? "ws://localhost:1989" : "wss://collie-known-wildly.ngrok-free.app";
-
-if (false) {
-    window.alert("The server is offline right now. Please try again in a few minute.");
-    location.reload();
-}
+https://6523554ace69bb52135f4b0f1e5f2f06.serveo.net
